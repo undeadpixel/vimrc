@@ -30,7 +30,8 @@ task :remove do |t|
 
   puts "> renaming local modifications files"
   FILES.each do |file|
-    mv(File.expand_path("~/#{file}.local"), File.expand_path("~/#{file}.local.old"))
+    local_file = File.expand_path("~/#{file}.local")
+    mv(local_file, File.expand_path("~/#{file}.local.old"), :force => true) if File.exist? local_file
   end
 
   puts "### You should manually execute: rm -fr #{File.expand_path("..", __FILE__)}"
