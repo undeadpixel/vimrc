@@ -11,11 +11,12 @@ end
 desc "install vimrc in current system"
 task :install do |t|
   puts "> symlinking vimrc files"
-  `ln -nfs .vimrc $HOME/.vimrc`
-  `ln -nfs .gvimrc $HOME/.gvimrc`
+  %w{.vimrc .gvimrc}.each do |file|
+    ln_sf File.expand_path("../#{file}", __FILE__), File.expand_path("~/#{file}")
+  end
 
   # update everything
-  `rake update`
+  sh "rake update"
 end
 
 task :default => [:update]
