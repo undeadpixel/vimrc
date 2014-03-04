@@ -1,11 +1,11 @@
 desc "update all submodules & pathogen"
 task :update do |t|
   puts "> updating vimrc"
-  `git pull`
+  sh "git pull"
 
   puts "> updating all submodules"
-  `git submodule sync`
-  `git submodule update --init`
+  sh "git submodule sync"
+  sh "git submodule update --init"
 end
 
 FILES = %w{.vimrc .gvimrc}
