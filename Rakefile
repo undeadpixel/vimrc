@@ -8,15 +8,32 @@ task :update do |t|
   `git submodule update --init`
 end
 
+FILES = %w{.vimrc .gvimrc}
+
 desc "install vimrc in current system"
 task :install do |t|
   puts "> symlinking vimrc files"
-  %w{.vimrc .gvimrc}.each do |file|
+  FILES.each do |file|
     ln_sf File.expand_path("../#{file}", __FILE__), File.expand_path("~/#{file}")
   end
 
   # update everything
   sh "rake update"
+end
+
+desc "removes all external files"
+task :remove do |t|
+  puts "> removing external config files"
+  FILES.each do |file|
+    rm_f(File.expand_path("~/#{file}"))
+  end
+
+  puts "> renaming local modifications files"
+  FILES.each do |file|
+    mv(File.expand_path("~/#{file}.local"), File.expand_path("~/#{file}.local.old"))
+  end
+
+  puts "### You should manually execute: rm -fr #{File.expand_path("..", __FILE__)}"
 end
 
 task :default => [:update]
