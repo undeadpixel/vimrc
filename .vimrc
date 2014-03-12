@@ -1,6 +1,7 @@
 
 "" startup pathogen
 execute pathogen#infect()
+Helptags
 
 set nocompatible                " no compatibility with legacy vi
 syntax enable
