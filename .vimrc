@@ -32,7 +32,7 @@ set smartcase                   " ... unless they contain at least one capital l
 
 "" Status and line numbers
 set ruler
-set nonumber
+set number
 
 "" Window split
 
