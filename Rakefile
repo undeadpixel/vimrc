@@ -1,3 +1,8 @@
+desc "upgrade all submodules"
+task :upgrade do |t|
+  sh "git submodule foreach 'git fetch origin && git reset --hard origin/master'"
+end
+
 desc "update all submodules & pathogen"
 task :update do |t|
   puts "> updating vimrc"
