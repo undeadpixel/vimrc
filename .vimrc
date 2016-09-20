@@ -46,6 +46,7 @@ nnoremap <C-H> <C-W><C-H>
 
 "" syntax overrides for complex templates
 autocmd BufRead,BufNewFile *.pdf.erb set filetype=eruby.html
+au BufNewFile,BufRead SCons* set filetype=scons
 
 "" local costumizations
 if filereadable(expand("~/.vimrc.local"))
