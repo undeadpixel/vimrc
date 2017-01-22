@@ -48,6 +48,9 @@ nnoremap <C-H> <C-W><C-H>
 autocmd BufRead,BufNewFile *.pdf.erb set filetype=eruby.html
 au BufNewFile,BufRead SCons* set filetype=scons
 
+"" do not use internal clipboards, use only system one
+set clipboard=unnamed
+
 "" local costumizations
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
